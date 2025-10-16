@@ -28,7 +28,14 @@ class AlumnosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $alumnos= new alumnos();
+        $alumnos->id=$request->input('id');
+        $alumnos->codigo=$request->input('codigo');
+        $alumnos->nombre=$request->input('nombre');
+        $alumnos->apellido=$request->input('apellido');
+        $alumnos->genero=$request->input('genero');
+        $alumnos->carrera=$request->input('carrera');
+        $alumnos->save();
     }
 
     /**
