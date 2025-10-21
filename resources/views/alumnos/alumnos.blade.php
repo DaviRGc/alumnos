@@ -41,7 +41,7 @@
                             <button type="submit">Eliminar</button>
                         </form>
                     </td>
-                     <td>
+                     /*<td>
                         <a href="{{ route('alumnos.edit', $alumno->id) }}">Editar</a>
                          <form action="{{ route('alumnos.destroy', $alumno->id) }}" method="POST">
                             @csrf

@@ -8,7 +8,8 @@
 </head>
 <body>
     <h1>Editar alumno</h1>
-    <form action="{{ route('alumnos.update', $alumnos->id) }}" method="POST">
+    <form action="{{ route('alumnos.update', ['alumno' => $alumnos->id]) }}" method="POST">
+        <div>
         @csrf
         @method('PATCH')
         <label for="codigo">Código:</label>
