@@ -38,15 +38,21 @@ class AlumnosController extends Controller
             'apellido' => 'required',
             'genero' => 'required',
             'carrera' => 'required',
+            'fecha_nacimiento' => 'required|date',
+            'correo' => 'required|email|unique:alumnos,correo',
         ]);
-        $alumnos= new alumnos();
-        $alumnos->codigo=$request->input('codigo');
-        $alumnos->nombre=$request->input('nombre');
-        $alumnos->apellido=$request->input('apellido');
-        $alumnos->genero=$request->input('genero');
-        $alumnos->carrera=$request->input('carrera');
+
+        $alumnos = new alumnos();
+        $alumnos->codigo = $request->input('codigo');
+        $alumnos->nombre = $request->input('nombre');
+        $alumnos->apellido = $request->input('apellido');
+        $alumnos->genero = $request->input('genero');
+        $alumnos->carrera = $request->input('carrera');
+        $alumnos->fecha_nacimiento = $request->input('fecha_nacimiento');
+        $alumnos->correo = $request->input('correo');
         $alumnos->save();
-        return redirect('/alumnos');
+
+        return redirect()->route('alumnos.index');
     }
 
     
@@ -73,17 +79,22 @@ class AlumnosController extends Controller
     public function update(Request $request, alumnos $alumno)
     {
          $request->validate([
-            //'codigo' => 'required|unique:alumnos,codigo,'.$alumnos->id,
+            'codigo' => 'required|unique:alumnos,codigo,'.$alumno->id,
             'nombre' => 'required',
             'apellido' => 'required',
             'genero' => 'required',
             'carrera' => 'required',
+            'fecha_nacimiento' => 'required|date',
+            // allow the current alumno's correo when updating
+            'correo' => 'required|email|unique:alumnos,correo,'.$alumno->id,
         ]);
         $alumno->codigo = $request->codigo;
         $alumno->nombre = $request->nombre;
         $alumno->apellido = $request->apellido;
         $alumno->genero = $request->genero;
         $alumno->carrera = $request->carrera;
+        $alumno->fecha_nacimiento = $request->fecha_nacimiento;
+        $alumno->correo = $request->correo;
         $alumno->save();
         return redirect('/alumnos/'.$alumno->id);
     }

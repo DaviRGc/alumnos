@@ -25,6 +25,7 @@
                 <th>Fecha de Nacimiento</th>
                 <th>Género</th>
                 <th>Carrera</th>
+                <th>Correo</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -38,6 +39,7 @@
                 <td>{{ $alumno->fecha_nacimiento }}</td>
                 <td>{{ $alumno->genero }}</td>
                 <td>{{ $alumno->carrera }}</td>
+                <td>{{ $alumno->correo }}</td>
                 <td>
                     <a href="{{ route('alumnos.show', ['alumno' => $alumno->id]) }}">Ver</a>
                     <a href="{{ route('alumnos.edit', ['alumno' => $alumno->id]) }}">Editar</a>
@@ -51,6 +53,7 @@
             </tr>
             @endforeach
         </tbody>
+    </table>
 </body>
 
 </html>

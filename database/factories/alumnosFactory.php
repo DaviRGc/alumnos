@@ -22,6 +22,10 @@ class alumnosFactory extends Factory
             'apellido' => $this->faker->lastName(),
             'genero' => $this->faker->randomElement(['M', 'F', 'O']),
             'carrera' => $this->faker->randomElement(['Ing. Sistemas', 'Matemáticas', 'Derecho']),
+            'fecha_nacimiento' => $this->faker->date(),
+            'correo' => $this->faker->unique()->safeEmail(),
+            
+            
         ];
     }
 }

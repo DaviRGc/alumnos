@@ -49,3 +49,31 @@ test('verifica errores al crear alumno', function () {
         'nombre' => $alumno->nombre,
     ]);
 });
+
+test('crea alumno con correo y fecha y las muestra en index y show', function () {
+    $alumno = alumnos::factory()->make([
+        'fecha_nacimiento' => '2000-01-01',
+        'correo' => 'testcorreo@example.com',
+    ]);
+
+    $this->post('/alumnos', $alumno->toArray())
+        ->assertRedirect('/alumnos');
+
+    $this->assertDatabaseHas('alumnos', [
+        'codigo' => $alumno->codigo,
+        'correo' => 'testcorreo@example.com',
+        'fecha_nacimiento' => '2000-01-01',
+    ]);
+
+    $created = alumnos::where('codigo', $alumno->codigo)->first();
+
+    // Index should show correo and fecha
+    $this->get('/alumnos')
+        ->assertStatus(200)
+        ->assertSee('testcorreo@example.com')
+        ->assertSee('2000-01-01');
+
+    // The model should have the correo and fecha stored correctly
+    $this->assertEquals('testcorreo@example.com', $created->correo);
+    $this->assertEquals('2000-01-01', $created->fecha_nacimiento);
+});

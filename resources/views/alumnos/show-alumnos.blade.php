@@ -19,7 +19,8 @@
         <strong>Carrera:</strong> {{ $alumno->carrera }}<br>
         <strong>Código:</strong> {{ $alumno->codigo }}<br>
         <strong>Fecha de Nacimiento:</strong> {{ $alumno->fecha_nacimiento }}<br>
-        <strong>Correo:</strong> {{ $alumno->correo }}<br>
+    <strong>Correo:</strong> {{ $alumno->correo }}<br>
+
     </p>
 </body>
 </html>

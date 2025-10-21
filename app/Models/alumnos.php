@@ -14,5 +14,8 @@ class alumnos extends Model
         'apellido',
         'genero',
         'carrera',
+       'fecha_nacimiento',
+         'correo',
     ];
+
 }
