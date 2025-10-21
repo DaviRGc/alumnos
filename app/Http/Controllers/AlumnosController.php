@@ -40,7 +40,6 @@ class AlumnosController extends Controller
             'carrera' => 'required',
         ]);
         $alumnos= new alumnos();
-        // id is auto-increment, no need to set it manually
         $alumnos->codigo=$request->input('codigo');
         $alumnos->nombre=$request->input('nombre');
         $alumnos->apellido=$request->input('apellido');
@@ -50,12 +49,10 @@ class AlumnosController extends Controller
         return redirect('/alumnos');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(alumnos $alumnos)
+    
+    public function show(alumnos $alumno)
     {
-                return view('alumnos.show-alumnos', compact('alumnos'));
+                return view('alumnos.show-alumnos', compact('alumno'));
 
 
     }
@@ -63,9 +60,9 @@ class AlumnosController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(alumnos $alumnos)
+    public function edit(alumnos $alumno)
     {
-                return view('alumnos.edit-alumnos', compact('alumnos'));
+                return view('alumnos.edit-alumnos', compact('alumno'));
 
         
     }
@@ -73,7 +70,7 @@ class AlumnosController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, alumnos $alumnos)
+    public function update(Request $request, alumnos $alumno)
     {
          $request->validate([
             //'codigo' => 'required|unique:alumnos,codigo,'.$alumnos->id,
@@ -82,21 +79,21 @@ class AlumnosController extends Controller
             'genero' => 'required',
             'carrera' => 'required',
         ]);
-        $alumnos->codigo = $request->codigo;
-        $alumnos->nombre = $request->nombre;
-        $alumnos->apellido = $request->apellido;
-        $alumnos->genero = $request->genero;
-        $alumnos->carrera = $request->carrera;
-        $alumnos->save();
-        return redirect('/alumnos/'.$alumnos->id);
+        $alumno->codigo = $request->codigo;
+        $alumno->nombre = $request->nombre;
+        $alumno->apellido = $request->apellido;
+        $alumno->genero = $request->genero;
+        $alumno->carrera = $request->carrera;
+        $alumno->save();
+        return redirect('/alumnos/'.$alumno->id);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(alumnos $alumnos)
+    public function destroy(alumnos $alumno)
     {
-         $alumnos->delete();
+         $alumno->delete();
         return redirect('/alumnos');
     }
 }

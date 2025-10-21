@@ -30,6 +30,9 @@
         <label for="apellido">Apellido:</label>
         <input type="text" id="apellido" name="apellido" value="{{ old('apellido') }}" required>
         <br>
+        <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" value="{{ old('fecha_nacimiento') }}" required>
+        <br>
         <label for="correo">Correo:</label>
         <input type="email" id="correo" name="correo" value="{{ old('correo') }}" required>
         <br>

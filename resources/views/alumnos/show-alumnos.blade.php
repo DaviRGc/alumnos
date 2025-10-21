@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>DETALLE</title>
 </head>
 <body>
     <ul>
@@ -12,11 +12,14 @@
             <a href="{{ route('alumnos.index') }}">Alumnos</a>
         </li>
     </ul>
-    <h1>Alumno: {{ $alumno->nombre }}</h1>
+    <h1>Alumno: {{ $alumno->nombre }} {{ $alumno->apellido }}</h1>
 
     <p>
-        <strong>Descripción:</strong><br>
-        {{ $tarea->descripcion }}
+        <strong>Género:</strong> {{ $alumno->genero }}<br>
+        <strong>Carrera:</strong> {{ $alumno->carrera }}<br>
+        <strong>Código:</strong> {{ $alumno->codigo }}<br>
+        <strong>Fecha de Nacimiento:</strong> {{ $alumno->fecha_nacimiento }}<br>
+        <strong>Correo:</strong> {{ $alumno->correo }}<br>
     </p>
 </body>
 </html>
