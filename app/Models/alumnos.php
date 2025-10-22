@@ -20,3 +20,4 @@ class alumnos extends Model
 
 }
 
+//YA SE PUDO, EN COMMIT DIGO Q CHINGADOS HICE
