@@ -19,3 +19,4 @@ class alumnos extends Model
     ];
 
 }
+

@@ -21,8 +21,10 @@ trait CreatesApplication
         // (for example the 'alumnos' resource) are registered when tests run.
         $routesFile = __DIR__ . '/../routes/web.php';
         if (file_exists($routesFile)) {
-            // include directly to register routes on the Router
-            require $routesFile;
+            // register routes under the 'web' middleware so session and other
+            // web middlewares are applied during tests (StartSession, etc.)
+            $router = $app->make(\Illuminate\Routing\Router::class);
+            $router->middleware('web')->group($routesFile);
         }
 
         return $app;
