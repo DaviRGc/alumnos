@@ -14,7 +14,8 @@ class AlumnosController extends Controller
      */
     public function index()
     {
-        $alumnos = alumnos::all();
+        // Use pagination so the Blade view can call $alumnos->links()
+        $alumnos = alumnos::paginate(10);
         return view('alumnos.alumnos', compact('alumnos'));
     }
 
