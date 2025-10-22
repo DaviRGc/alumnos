@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\alumnos;
-uses(Tests\TestCase::class, Illuminate\Foundation\Testing\RefreshDatabase::class);
 
 test('manual edit flow', function () {
     // create a record
