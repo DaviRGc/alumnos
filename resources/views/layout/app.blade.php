@@ -1,30 +1,38 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', config('app.name'))</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'Mi aplicación')</title>
 
-    {{-- Vite: carga CSS/JS --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-    {{-- Permite push de estilos desde vistas hijas --}}
-    @stack('styles')
+    {{-- Estilos con Vite y Tailwind --}}
+    @vite('resources/css/app.css')
 </head>
-<body class="antialiased bg-white text-gray-900">
 
-    {{-- Header --}}
-    @include('partials.header')
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col">
 
-    {{-- Main content --}}
-    <main class="container mx-auto py-6 px-4">
+    {{-- NAVBAR --}}
+    <nav class="bg-indigo-600 text-white shadow">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+           
+            <ul class="flex gap-6 text-sm">
+                <li><a href="{{ route('alumnos.index') }}" class="hover:underline">Alumnos</a></li>
+                
+            </ul>
+        </div>
+    </nav>
+
+    {{-- CONTENIDO PRINCIPAL --}}
+    <main class="flex-1 max-w-7xl mx-auto p-6 w-full">
         @yield('content')
     </main>
 
-    {{-- Footer --}}
-    @include('partials.footer')
+    {{-- FOOTER --}}
+    <footer class="bg-gray-800 text-gray-300 text-center py-4 text-sm">
+        © {{ date('Y') }} crud — Todos los derechos reservados a diosito que me dio la fuerza.
+    </footer>
 
-    {{-- Permite push de scripts desde vistas hijas --}}
-    @stack('scripts')
+    {{-- Scripts con Vite --}}
+    @vite('resources/js/app.js')
 </body>
 </html>
