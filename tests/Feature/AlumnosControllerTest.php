@@ -71,7 +71,7 @@ test('crea alumno con correo y fecha y las muestra en index y show', function ()
     $this->get('/alumnos')
         ->assertStatus(200)
         ->assertSee('testcorreo@example.com')
-    
+        ->assertSee('2000-01-01');
 
     // The model should have the correo and fecha stored correctly
     $this->assertEquals('testcorreo@example.com', $created->correo);
