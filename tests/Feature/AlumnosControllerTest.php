@@ -10,16 +10,17 @@ test('muestra listado de alumnos', function () {
 
     $this->get('/alumnos')
         ->assertStatus(200)
-        ->assertSeeInOrder(['ID', 'Nombre', 'Apellido', 'Género', 'Carrera', 'Acciones'])
+        ->assertSeeInOrder(['ID', 'Nombre', 'Apellido', 'Genero', 'Correo', 'Carrera', 'Acciones'])
         ->assertSee($alumno->nombre);
 });
+
 
 test('muestra formulario de creación de alumno', function () {
     
     $this->withViewErrors([])
         ->get('/alumnos/create')
         ->assertStatus(200)
-        ->assertSeeInOrder(['Código', 'Nombre', 'Apellido', 'Género','Correo', 'Carrera', 'Guardar']);
+        ->assertSeeInOrder(['Código', 'Nombre', 'Apellido','Fecha de nacimiento' ,'Correo electrónico','', 'Género', 'Carrera',]);
 });
 
 test('crea un alumno', function () {
