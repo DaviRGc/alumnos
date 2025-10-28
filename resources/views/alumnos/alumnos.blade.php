@@ -18,7 +18,10 @@
             <th class="px-4 py-2 border-b">ID</th>
             <th class="px-4 py-2 border-b">Nombre</th>
             <th class="px-4 py-2 border-b">Apellido</th>
+            <th class="px-10 py-2 border-b">Genero</th>
             <th class="px-10 py-2 border-b">Correo</th>
+            <th class="px-4 py-2 border-b">Carrera</th>
+            <th class="px-4 py-2 border-b">Fecha de Nacimiento</th>
             <th class="px-4 py-2 border-b">Acciones</th>
         </tr>
     </thead>
@@ -28,8 +31,10 @@
                 <td class="px-4 py-2 border-b">{{ $alumno->id }}</td>
                 <td class="px-4 py-2 border-b">{{ $alumno->nombre }}</td>
                 <td class="px-4 py-2 border-b">{{ $alumno->apellido }}</td>
+                <td class="px-10 py-2 border-b">{{ $alumno->genero }}</td>
                 <td class="px-10 py-2 border-b">{{ $alumno->correo }}</td>
-                
+                <td class="px-4 py-2 border-b">{{ $alumno->carrera }}</td>
+                <td class="px-4 py-2 border-b">{{ $alumno->fecha_nacimiento }}</td>
                 <td class="px-4 py-2 border-b">
                     <a href="{{ route('alumnos.edit', $alumno) }}" class="text-indigo-600 hover:underline">Editar</a>
                     |<a href="{{ route('alumnos.show', $alumno) }}" class="text-green-600 hover:underline">Ver</a>

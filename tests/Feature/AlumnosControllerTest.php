@@ -15,11 +15,11 @@ test('muestra listado de alumnos', function () {
 });
 
 test('muestra formulario de creación de alumno', function () {
-    // Ensure $errors is present in the view (some blades reference it directly)
+    
     $this->withViewErrors([])
         ->get('/alumnos/create')
         ->assertStatus(200)
-        ->assertSeeInOrder(['Código', 'Nombre', 'Apellido', 'Género', 'Carrera', 'Guardar']);
+        ->assertSeeInOrder(['Código', 'Nombre', 'Apellido', 'Género','Correo', 'Carrera', 'Guardar']);
 });
 
 test('crea un alumno', function () {
@@ -52,7 +52,7 @@ test('verifica errores al crear alumno', function () {
 
 test('crea alumno con correo y fecha y las muestra en index y show', function () {
     $alumno = alumnos::factory()->make([
-        'fecha_nacimiento' => '2000-01-01',
+        'fecha_nacimiento' => '11-01-2001',
         'correo' => 'testcorreo@example.com',
     ]);
 
@@ -62,18 +62,18 @@ test('crea alumno con correo y fecha y las muestra en index y show', function ()
     $this->assertDatabaseHas('alumnos', [
         'codigo' => $alumno->codigo,
         'correo' => 'testcorreo@example.com',
-        'fecha_nacimiento' => '2000-01-01',
+        'fecha_nacimiento' => '11-01-2001',
     ]);
 
     $created = alumnos::where('codigo', $alumno->codigo)->first();
 
-    // Index should show correo and fecha
+    // mostrar en la vista de inicio
     $this->get('/alumnos')
         ->assertStatus(200)
         ->assertSee('testcorreo@example.com')
-        ->assertSee('2000-01-01');
+        ->assertSee('11-01-2001');
 
-    // The model should have the correo and fecha stored correctly
+    // poner el correo d manera correcta
     $this->assertEquals('testcorreo@example.com', $created->correo);
-    $this->assertEquals('2000-01-01', $created->fecha_nacimiento);
+    $this->assertEquals('11-01-2001', $created->fecha_nacimiento);
 });
